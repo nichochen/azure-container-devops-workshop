@@ -9,8 +9,8 @@ Kubernetes是云计算时代的操作系统，Kubernetes可以运行在几乎所
 公有云是Kubernetes的一个重要的场景，具有广阔的前景。本系列实验将通过一些实际的例子给大家介绍有关公有云的Kubernetes实现和特点，帮助大家了解如何使用公有云Kubernetes服务更好地用好Kubernetes，提高应用开发、部署和管理的效率。
 
 # 目录
-- [实验一 冲上云霄的Kubernetes！](./01-azure-kuberservice-service-lab01.md)
-- [实验二 云上的Kubernetes运维管理](./02-azure-kuberservice-service-lab02md)
-- [实验三 Kuberentes的容器应用开发](./03-azure-kuberservice-service-lab03.md)
+- [实验一 冲上云霄的Kubernetes！](./02-azure-kuberservice-service-lab01.md)
+- [实验二 云上的Kubernetes运维管理](./03-azure-kuberservice-service-lab02md)
+- [实验三 Kuberentes的容器应用开发](./04-azure-kuberservice-service-lab03.md)
 - [附录一 实验资源回收](./05-azure-kuberservice-service-appendix.md)
 - [附录二 参考信息](./06-azure-kuberservice-service-appendix.md)
