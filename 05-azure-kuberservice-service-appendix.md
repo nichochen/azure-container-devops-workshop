@@ -13,4 +13,4 @@
 - [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/)
 - [Helm](https://helm.sh/)
 - [Draft](https://github.com/Azure/draft)
-- [AKS China Best Practice]()
+- [AKS China Best Practice](https://github.com/Azure/container-service-for-azure-china/tree/master/aks)
