@@ -10,7 +10,7 @@ Kubernetes是云计算时代的操作系统，Kubernetes可以运行在几乎所
 
 # 目录
 - [实验一 冲上云霄的Kubernetes！](./02-azure-kuberservice-service-lab01.md)
-- [实验二 云上的Kubernetes运维管理](./03-azure-kuberservice-service-lab02md)
+- [实验二 云上的Kubernetes运维管理](./03-azure-kuberservice-service-lab02.md)
 - [实验三 Kuberentes的容器应用开发](./04-azure-kuberservice-service-lab03.md)
 - [附录一 实验资源回收](./05-azure-kuberservice-service-appendix.md)
-- [附录二 参考信息](./06-azure-kuberservice-service-appendix.md)
+- [附录二 参考信息](./05-azure-kuberservice-service-appendix.md)
