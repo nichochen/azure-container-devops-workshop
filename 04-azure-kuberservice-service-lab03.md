@@ -10,6 +10,7 @@
 请在本地开发环境中安装如下工具。
 - Azure CLI > 2.0。安装文档：https://docs.microsoft.com/zh-cn/cli/azure/install-azure-cli?view=azure-cli-latest
 - Git > 2.1。安装文档：https://git-scm.com/downloads
+- Helm > 2.6。请参考实验二1.1及1.2节
 
 使用Windows的同学，可以使用Git Bash执行本文的代码。
 
