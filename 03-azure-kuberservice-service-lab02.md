@@ -97,10 +97,10 @@ Application Routing这一功能启用后，可以在Kubernetes集群中看到相
 
 AKS为Kubernetes提供了一个应用可用的域名。通过下面的命令可以查询到当前集群所分配到的域名。下面是命令和示例输出。
 
-    $ az aks list --query "[?name=='k8s-cluster'].addonProfiles.httpApplicationRouting.config.HTTPApplicationRoutingZoneName"|tail -1
+    $ az aks list --query "[?name=='k8s-cluster'].addonProfiles.httpApplicationRouting.config.HTTPApplicationRoutingZoneName" -o table|tail -1
     4e8d71ef819b44169868.eastus.aksapp.io
 
-根据前面查询到的域名创建相应的Ingress对象。命令如下：
+根据前面查询到的域名创建相应的Ingress对象。注意替换域名`4e8d71ef819b44169868.eastus.aksapp.io`与Service名称`mothy-bobcat-wordpress`至实际查询到的结果。命令如下：
 
     $ echo '
     apiVersion: extensions/v1beta1
