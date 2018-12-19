@@ -41,13 +41,13 @@ Azure Cloud Shell固然很方便，但是有的朋友还是喜欢在本地执行
 执行如下命令在Azure上创建一个Kubernetes集群。
 
     $ az group create -n k8s-cloud-labs -l eastus
-    $ az aks create -g k8s-cloud-labs -n k8s-cluster --disable-rbac --generate-ssh-keys
+    $ az aks create -g k8s-cloud-labs -n k8s-cluster --disable-rbac --generate-ssh-keys -c 1
 
 第一条命令是创建一个资源组，可以认为这是Azure上的存放对象的文件夹。这里我们选择使用East US数据中心。
 
 > 提示！目前AKS中国区预览开放的区域为ChinaEast2。其他区域将逐步开放。
 
-第二条命令是真正创建Kubernetes集群的命令。`az aks`命令是操作AKS服务的子命令。我们在资源组`k8s-cloud-labs`中创建了一个名为`k8s-cluster`的集群。命令执行后，稍等片刻。5-10分钟后一个生产可用的Kubernetes将会就绪。
+第二条命令是真正创建Kubernetes集群的命令。`az aks`命令是操作AKS服务的子命令。我们在资源组`k8s-cloud-labs`中创建了一个名为`k8s-cluster`的集群，这个集群包含1个Node节点。命令执行后，稍等片刻。5-10分钟后一个生产可用的Kubernetes将会就绪。
 
 > 提示！AKS提供Kubernetes RBAC鉴权模型的支持。为了简化实验环境，本文通过参数`--disable-rbac`禁用了此功能。在安全方面，Azure的Kubernetes用户可以将AKS的Kubernetes集群与Azure Active Directory服务进行集成，实现Kubernetes与企业身份验证系统的对接。
 
@@ -74,8 +74,6 @@ kubectl安装完毕后，执行如下命令获取Kubernetes集群的连接信息
     $ kubectl get nodes
     NAME                       STATUS    ROLES     AGE       VERSION
     aks-nodepool1-16810059-0   Ready     agent     10m       v1.9.11
-    aks-nodepool1-16810059-1   Ready     agent     10m       v1.9.11
-    aks-nodepool1-16810059-2   Ready     agent     10m       v1.9.11
 
 通过输出看到命令列出了Kubernetes集群的节点列表。`az aks create`命令默认创建了一个含有3个计算节点的集群。通过参数`--node-count`用户可以指定集群计算节点（node）的数量。目前单集群最大支持100个节点。
 

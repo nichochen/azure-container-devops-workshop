@@ -89,6 +89,10 @@ ACR不单止提供容器镜像的存取服务，ACR还提供基于云端的容�
     $ draft config set resource-group-name k8s-cloud-labs
 
 ### 1.9 执行应用容器镜像构建
+获取AKS的Kubernetes集群的连接信息
+
+    $ az aks get-credentials -g k8s-cloud-labs -n k8s-cluster 
+
 创建所需的命名空间。
 
     $ kubectl create ns lab03

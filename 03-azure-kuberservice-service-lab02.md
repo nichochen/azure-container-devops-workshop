@@ -153,29 +153,18 @@ Kubernetes的日志和监控指标的收集可以通过开源的Fluentd、Elasti
     $ az aks list --query "[?name=='k8s-cluster'].agentPoolProfiles[0]" -o table
     Name       Count    VmSize           OsDiskSizeGb    StorageProfile    MaxPods    OsType
     ---------  -------  ---------------  --------------  ----------------  ---------  --------
-    nodepool1  3        Standard_DS2_v2  30              ManagedDisks      110        Linux
+    nodepool1  1        Standard_DS2_v2  30              ManagedDisks      110        Linux
 
-通过命令`az aks scale`用户可以对集群进行伸缩。下面的例子是将集群扩展至4个节点。
+通过命令`az aks scale`用户可以对集群进行伸缩。下面的例子是将集群扩展至2个节点。
 
-    $ az aks scale -g k8s-cloud-labs -n k8s-cluster -c 4
+    $ az aks scale -g k8s-cloud-labs -n k8s-cluster -c 2
 
-命令执行后，稍等片刻。在此查看集群节点状态便可以看到集群已经成功扩展至4个节点。
+命令执行后，稍等片刻。在此查看集群节点状态便可以看到集群已经成功扩展至2个节点。
     
     $ az aks list --query "[?name=='k8s-cluster'].agentPoolProfiles[0]" -o table
     Name       Count    VmSize           OsDiskSizeGb    StorageProfile    MaxPods    OsType
     ---------  -------  ---------------  --------------  ----------------  ---------  --------
-    nodepool1  4        Standard_DS2_v2  30              ManagedDisks      110        Linux
-
-除了快速为集群扩容外，也可以对集群进行缩容。在业务空闲时间，通过缩容，用户可以节省不必要的开销。在下面的例子里，我们将集群的节点缩减至2个。
-
-    $ az aks scale -g k8s-cloud-labs -n k8s-cluster -c 2
-
-缩容操作完成后检查集群节点，可以看到集群节点数已减少至2个。
-
-    $ az aks list --query "[?name=='k8s-cluster'].agentPoolProfiles[0].count"
-    Result
-    --------
-    2
+    nodepool1  2        Standard_DS2_v2  30              ManagedDisks      110        Linux
 
 ### 1.9 Kubernetes集群的升级
 作为一个开源项目Kubernetes的发展是非常迅速的，集群版本升级也是一个常见的场景。AKS提供了一键式的集群版本升级，使得集群的升级的复杂度大大降低。
