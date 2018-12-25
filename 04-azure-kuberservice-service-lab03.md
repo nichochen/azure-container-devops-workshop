@@ -7,6 +7,9 @@
 实验三 结合Kuberentes的容器应用开发
 实验难度：中级 | 实验用时：45分钟
 ## 1 准备本地开发环境
+
+> 提示！请使用Azure Global账号完成本实验。
+> 
 请在本地开发环境中安装如下工具。
 - Azure CLI > 2.0。安装文档：https://docs.microsoft.com/zh-cn/cli/azure/install-azure-cli?view=azure-cli-latest
 - Git > 2.1。安装文档：https://git-scm.com/downloads
@@ -52,7 +55,7 @@ Draft将在应用的目录下生成许多配置相关的文件。
 ### 1.6 镜像仓库
 应用容器化后将会生成容器镜像。容器镜像的存放也是一个需要重点关注的问题。用户可以将镜像存放在公共的镜像仓库或私有的镜像仓库中。Azure Container Registry（ACR）是Azure提供的一个镜像仓库服务。ACR是一个提供企业级安全和全球镜像同步功能的镜像仓库。
 
-执行以下命令，创建一个ACR仓库。本示例使用的镜像仓库名称为`k8scloudlabs`，请根据实际情况选择一个全局唯一的镜像仓库名称。
+执行以下命令，创建一个ACR仓库。本示例使用的镜像仓库名称为`k8scloudlabs`，`请根据实际情况选择一个全局唯一的镜像仓库名称`。
 
     $ az acr create -g k8s-cloud-labs -n k8scloudlabs --sku Standard
     NAME          RESOURCE GROUP    LOCATION    SKU       LOGIN SERVER             CREATION DATE         ADMIN ENABLED
@@ -75,7 +78,7 @@ ACR是一个带有安全认证机制的镜像仓库，AKS访问ACR下载镜像�
     ACR_ID=$(az acr show -n $ACR_NAME -g $ACR_RESOURCE_GROUP --query "id" -o tsv)
     az role assignment create --assignee $CLIENT_ID --role Reader --scope $ACR_ID
 
-> 提示！在Windows桌面中运行`az role`命令出错的情况下，可以将如下命令的输出拷贝至CMD中执行。
+> 提示！在Windows的Bash中运行`az role`命令出错的情况下，可以将如下命令的输出拷贝至CMD中执行。
 
     $ echo az role assignment create --assignee $CLIENT_ID --role Reader --scope $ACR_ID
 
@@ -85,8 +88,12 @@ ACR不单止提供容器镜像的存取服务，ACR还提供基于云端的容�
 执行以下命令，让Draft使用ACR进行容器镜像的构建。
 
     $ draft config set container-builder acrbuild
-    $ draft config set registry  k8scloudlabs.azurecr.io
+    $ draft config set registry k8scloudlabs
     $ draft config set resource-group-name k8s-cloud-labs
+
+如果希望在本地进行Docker镜像构建，可以通过如下命令对Draft进行设置。
+
+    $ draft config set container-builder docker
 
 ### 1.9 执行应用容器镜像构建
 获取AKS的Kubernetes集群的连接信息
@@ -117,14 +124,14 @@ ACR不单止提供容器镜像的存取服务，ACR还提供基于云端的容�
 
 容器镜像构建完毕后，Draft还将调用Helm，将应用部署至Kubernetes集群中。通过Helm可以查看到应用部署的情况。
 
-    $helm list
+    $ helm list
     NAME            REVISION        UPDATED                         STATUS          CHART           APP VERSION     NAMESPACE
     calico-ostrich  1               Sun Dec  2 21:54:59 2018        DEPLOYED        japp-v0.1.0                     lab03
 
 ### 1.10 访问远程容器服务
 当应用容器运行后，通过命令`draft up`可以将远程容器的端口映射到本地进行访问。
     
-    $draft connect
+    $ draft connect
     Connect to japp:4567 on localhost:59698
     ...内容省略...
 
