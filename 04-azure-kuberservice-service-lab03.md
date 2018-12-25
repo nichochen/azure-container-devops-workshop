@@ -48,7 +48,11 @@ Draft将在应用的目录下生成许多配置相关的文件。
     ./   .dockerignore  .draft-tasks.toml  .mvn/    Dockerfile  mvnw*     pom.xml
     ../  .draftignore   .gitignore         charts/  draft.toml  mvnw.cmd  src/
 
- 编辑draft.toml将属性`namespace`修改为`lab03`。这样后续应用将会被部署到命名空间`lab03`里。
+编辑文件`Dockerfile`，将`*-with-dependencies.jar`修改为:
+
+    japp*.jar
+
+ 编辑文件draft.toml将属性`namespace`修改为`lab03`。这样后续应用将会被部署到命名空间`lab03`里。
 
     namespace = "lab03"
 
